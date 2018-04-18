@@ -13,7 +13,7 @@ using namespace std;
 const int MAXN = 20 + 5;
 const int dx[] = {1, -1, 0, 0}, dy[] = {0, 0, 1, -1};
 
-int rear, tail;
+int head, tail;
 int m, n, pre[MAXN * MAXN], t;
 bool flag, a[MAXN][MAXN], vis[MAXN][MAXN];
 char ch;
@@ -43,17 +43,17 @@ void find(int x) {
 
 void bfs(int x, int y) {
 	vis[x][y] = 1;
-	rear = tail = 1;
+	head = tail = 1;
 	que[tail] = (rpg){x, y};
-	while(rear <= tail) {
+	while(head <= tail) {
 		if(flag) break;
 		for(int i = 0; i < 4; i++) {
 			if(flag) break;
-			int xx = que[rear].x + dx[i],
-				yy = que[rear].y + dy[i];
+			int xx = que[head].x + dx[i],
+				yy = que[head].y + dy[i];
 			if(xx >= 1 && yy >= 1 && xx <= m && yy <= n && !vis[xx][yy] && a[xx][yy] != 1) {
 				que[++tail] = (rpg){xx, yy};
-				pre[tail] = rear;
+				pre[tail] = head;
 				vis[xx][yy] = 1;
 				if(xx == dest.x && yy == dest.y) {
 					find(tail);
@@ -63,7 +63,7 @@ void bfs(int x, int y) {
 			}
 		}
 //		print();
-		rear++;
+		head++;
 	}
 }
 int main() {
