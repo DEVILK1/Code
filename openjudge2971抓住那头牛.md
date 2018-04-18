@@ -19,7 +19,7 @@ int que[MAXN], pre[MAXN];
 bool flag, vis[MAXN];
 
 void find(int x) {
-  //不使用递归防止步数太多而爆栈
+  	//不使用递归防止步数太多而爆栈
 	while(pre[x]) {
 //		cout << que[x] << "<-";
 		x = pre[x];
