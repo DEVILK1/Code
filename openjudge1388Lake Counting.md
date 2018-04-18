@@ -13,24 +13,24 @@ const int dx[] = {1, -1, 0, 0, 1, -1, 1, -1};
 const int dy[] = {0, 0, 1, -1, 1, -1, -1, 1};
 const int MAXN = 100 + 5;
 
-int n, m, rear, tail, ans;
+int n, m, head, tail, ans;
 int sign[MAXN][MAXN], que_x[MAXN * MAXN], que_y[MAXN * MAXN];
 bool a[MAXN][MAXN], vis[MAXN][MAXN];
 
 void bfs(int x, int y) {
-	rear = tail = 1;
+	head = tail = 1;
 	que_x[tail] = x;
 	que_y[tail] = y;
-	while(rear <= tail) {
+	while(head <= tail) {
 		for(int i = 0; i < 8; i++) {
-			int xx = que_x[rear] + dx[i], yy = que_y[rear] + dy[i];
+			int xx = que_x[head] + dx[i], yy = que_y[head] + dy[i];
 			if(xx > 0 && yy > 0 && xx <= n && yy <= m && !vis[xx][yy] && a[xx][yy]) {
 				vis[xx][yy] = 1;
 				que_x[++tail] = xx;
 				que_y[tail] = yy;
 			}
 		}
-		rear++;
+		head++;
 	}
 }
 int main() {
