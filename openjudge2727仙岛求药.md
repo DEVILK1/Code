@@ -4,6 +4,14 @@ http://noi.openjudge.cn/ch0205/2727/
 原来end是保留字啊..本地编译通过提交和在线IDE却CE了，就把end换成了destination..
 然后发现bfs判断点有没有超出范围的时候两个都是打的n，是n*m的矩阵QwQ…
 
+注意此题是要求求出从初始点到目标点的最短步数，bfs能保证步数最短，那如何记录这个步数呢?
+
+tail是步数吗?
+
+显然不是，每一次入队点的不一定在最后的路线上，但tail是连通块的大小
+
+使用一个pre数组，记录每一次tail的前驱，最后再递归求解就使问题十分简单了
+
 ```c++
 #include<iostream>
 #include<cstdio>
