@@ -2,9 +2,11 @@ https://www.luogu.org/problemnew/show/P3366
 
 堆优化的Prim，就和dijkstra差不多...
 
+在稠密图（点比较多）中跑得快...因为是枚举的点
+
 ```c++
-//MST
-//Prim
+// MST
+// Prim
 #include<iostream>
 #include<cstdio>
 #include<algorithm>
